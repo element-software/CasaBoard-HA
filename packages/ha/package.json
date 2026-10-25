@@ -1,0 +1,82 @@
+{
+  "name": "@casaboard/ha",
+  "version": "0.1.0",
+  "description": "Home Assistant connection helpers, React provider, and entity hooks for CasaBoard (and standalone apps).",
+  "license": "MIT",
+  "author": "Element Software",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/element-software/CasaBoard-HA.git",
+    "directory": "packages/ha"
+  },
+  "homepage": "https://github.com/element-software/CasaBoard-HA/tree/main/packages/ha",
+  "bugs": {
+    "url": "https://github.com/element-software/CasaBoard-HA/issues"
+  },
+  "keywords": [
+    "home-assistant",
+    "homeassistant",
+    "hass",
+    "websocket",
+    "react",
+    "casaboard"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "test": "tsx --test camera/**/*.test.ts hooks/**/*.test.ts connection/**/*.test.ts alarm/**/*.test.ts events/**/*.test.ts store/**/*.test.ts registry/**/*.test.ts repairs/**/*.test.ts",
+    "prepack": "npm run build && node ./scripts/prepack.mjs",
+    "postpack": "node ./scripts/postpack.mjs",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs",
+        "default": "./dist/index.js"
+      },
+      "./package.json": "./package.json"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "home-assistant-js-websocket": "^9.5.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.34.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tsup": "^8.5.0",
+    "tsx": "^4.23.1",
+    "typescript": "5.9.2"
+  }
+}

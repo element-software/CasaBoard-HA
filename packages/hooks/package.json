@@ -1,0 +1,28 @@
+{
+  "name": "@repo/hooks",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./index.ts",
+    "./ingress": "./ingress.tsx",
+    "./*": "./*.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@casaboard/ha": "*",
+    "@repo/lib": "*",
+    "@repo/types": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@repo/utils": "*",
+    "@types/node": "^22.15.3",  
+    "eslint": "^9.34.0",
+    "typescript": "5.9.2",  
+    "@measured/puck": "^0.20.2"
+  }
+}

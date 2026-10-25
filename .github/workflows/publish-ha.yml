@@ -1,0 +1,66 @@
+name: Publish @casaboard/ha
+
+on:
+  push:
+    tags:
+      - "ha-v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version to publish (e.g. 0.1.1). Leave empty to use package.json version."
+        required: false
+        type: string
+
+# Trusted Publishing (OIDC) — no NPM_TOKEN required.
+# Configure on npmjs.com → @casaboard/ha → Settings → Trusted Publisher
+# after the package exists (one-time manual publish).
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/ha
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          # Trusted publishing needs Node ≥22.14 and npm ≥11.5.1
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          scope: "@casaboard"
+
+      - name: Ensure recent npm CLI
+        run: npm install -g npm@latest
+
+      - name: Install
+        working-directory: .
+        run: npm ci
+
+      - name: Sync version from tag
+        if: startsWith(github.ref, 'refs/tags/ha-v')
+        run: |
+          VERSION="${GITHUB_REF_NAME#ha-v}"
+          npm version "$VERSION" --no-git-tag-version --allow-same-version
+
+      - name: Sync version from workflow input
+        if: github.event_name == 'workflow_dispatch' && inputs.tag != ''
+        run: |
+          npm version "${{ inputs.tag }}" --no-git-tag-version --allow-same-version
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      # Do NOT set NODE_AUTH_TOKEN — that forces the legacy token path and
+      # prevents npm Trusted Publishing (OIDC) from authenticating.
+      - name: Publish to npm
+        run: npm publish --access public

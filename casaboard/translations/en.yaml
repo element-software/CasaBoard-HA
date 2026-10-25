@@ -1,0 +1,4 @@
+network:
+  3000/tcp: >-
+    Kiosk port (optional). Serves /dashboard pages only, with no login, for
+    wall tablets. Leave empty to keep CasaBoard Ingress-only.

@@ -1,0 +1,13 @@
+/* App-specific Tailwind entry that augments sources for Vercel builds */
+@import "@repo/tailwind-config";
+
+/* Ensure Tailwind scans this app's files */
+@source "./**/*.{js,ts,jsx,tsx,mdx}";
+
+/* Scan shared UI package used by this app */
+@source "../../packages/ui/**/*.{js,ts,jsx,tsx}";
+
+/* Scan HeroUI theme from this app's node_modules */
+@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+

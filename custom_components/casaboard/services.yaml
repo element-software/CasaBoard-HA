@@ -1,0 +1,10 @@
+refresh:
+  name: Refresh status
+  description: Poll CasaBoard /api/health immediately.
+  fields:
+    entry_id:
+      name: Config entry ID
+      description: Optional. When set, only that entry is refreshed.
+      example: "01JEXAMPLE"
+      selector:
+        text:

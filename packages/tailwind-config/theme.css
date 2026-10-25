@@ -1,0 +1,218 @@
+/* Theme CSS Custom Properties — defaults; dashboard may override via ThemeScope */
+
+:root {
+  --theme-page-background: #f2f2f7;
+  --theme-background: #f2f2f7;
+  --theme-surface: #ffffff;
+  --theme-elevated: #ffffff;
+  --theme-border: #e5e5ea;
+  --theme-divider: #e5e5ea;
+
+  --theme-text: #1c1c1e;
+  --theme-text-primary: #f2c94c;
+  --theme-text-secondary: #8e8e93;
+  --theme-text-muted: #aeaeb2;
+  --theme-text-on-primary: #ffffff;
+  --theme-text-on: #ffffff;
+
+  --theme-primary: #f2c94c;
+  --theme-secondary: #e6b93d;
+  --theme-accent: #f2c94c;
+
+  --theme-success: #34c759;
+  --theme-warning: #ff9f0a;
+  --theme-error: #ff3b30;
+  --theme-info: #007aff;
+
+  --theme-card-background: #ffffff;
+  --theme-card-border: #e5e5ea;
+  --theme-card-hover: #f9f9fb;
+
+  --theme-entity-on: #f2c94c;
+  --theme-entity-off: #ffffff;
+  --theme-entity-on-muted: #e6b93d;
+  --theme-entity-off-muted: #e5e5ea;
+  --theme-entity-unavailable: #ff3b30;
+  --theme-entity-unknown: #8e8e93;
+
+  --theme-alarm-armed: #ff9f0a;
+  --theme-alarm-disarmed: #34c759;
+  --theme-alarm-triggered: #ff3b30;
+
+  --theme-button-primary: #f2c94c;
+  --theme-button-secondary: #efeef0;
+  --theme-button-success: #34c759;
+  --theme-button-warning: #ff9f0a;
+  --theme-button-error: #ff3b30;
+
+  --theme-slider-track: #e5e5ea;
+  --theme-slider-thumb: #f2c94c;
+  --theme-slider-active: #f2c94c;
+
+  --theme-interactive-hover: #e5e5ea;
+  --theme-interactive-active: #1c1c1e;
+  --theme-interactive-inactive: #f2f2f7;
+  --theme-focus-ring: #007aff;
+  --theme-disabled-foreground: #aeaeb2;
+  --theme-disabled-background: #f2f2f7;
+
+  --theme-chart-line: #f2c94c;
+  --theme-chart-fill: #f2c94c;
+  --theme-chart-grid: #e5e5ea;
+
+  --theme-domain-light-on: #f2c94c;
+  --theme-domain-switch-on: #007aff;
+  --theme-domain-climate-on: #e29933;
+}
+
+.bg-theme-page-background {
+  background-color: var(--theme-page-background);
+}
+
+.bg-theme-background {
+  background-color: var(--theme-background);
+}
+
+.bg-theme-surface {
+  background-color: var(--theme-surface);
+}
+
+.bg-theme-elevated {
+  background-color: var(--theme-elevated);
+}
+
+.text-theme-text {
+  color: var(--theme-text);
+}
+
+.text-theme-text-primary {
+  color: var(--theme-text-primary);
+}
+
+.text-theme-text-secondary {
+  color: var(--theme-text-secondary);
+}
+
+.text-theme-text-muted {
+  color: var(--theme-text-muted);
+}
+
+.text-theme-secondary {
+  color: var(--theme-secondary);
+}
+
+.border-theme-border {
+  border-color: var(--theme-border);
+}
+
+.border-theme-divider {
+  border-color: var(--theme-divider);
+}
+
+.bg-theme-primary {
+  background-color: var(--theme-primary);
+}
+
+.text-theme-primary {
+  color: var(--theme-primary);
+}
+
+.bg-theme-success {
+  background-color: var(--theme-success);
+}
+
+.text-theme-success {
+  color: var(--theme-success);
+}
+
+.bg-theme-warning {
+  background-color: var(--theme-warning);
+}
+
+.text-theme-warning {
+  color: var(--theme-warning);
+}
+
+.bg-theme-error {
+  background-color: var(--theme-error);
+}
+
+.text-theme-error {
+  color: var(--theme-error);
+}
+
+.bg-theme-info {
+  background-color: var(--theme-info);
+}
+
+.text-theme-info {
+  color: var(--theme-info);
+}
+
+.bg-theme-card {
+  background-color: var(--theme-card-background);
+}
+
+.bg-theme-entity-on {
+  background-color: var(--theme-entity-on);
+}
+
+.bg-theme-entity-off {
+  background-color: var(--theme-entity-off);
+}
+
+.bg-theme-entity-unavailable {
+  background-color: var(--theme-entity-unavailable);
+}
+
+.bg-theme-alarm-armed {
+  background-color: var(--theme-alarm-armed);
+}
+
+.bg-theme-alarm-disarmed {
+  background-color: var(--theme-alarm-disarmed);
+}
+
+.bg-theme-alarm-triggered {
+  background-color: var(--theme-alarm-triggered);
+}
+
+.bg-theme-interactive-hover {
+  background-color: var(--theme-interactive-hover);
+}
+
+.bg-theme-interactive-active {
+  background-color: var(--theme-interactive-active);
+}
+
+.bg-theme-interactive-inactive {
+  background-color: var(--theme-interactive-inactive);
+}
+
+.hover\:bg-theme-interactive-hover:hover {
+  background-color: var(--theme-interactive-hover);
+}
+
+.hover\:text-theme-text:hover {
+  color: var(--theme-text);
+}
+
+.active\:bg-theme-interactive-active:active {
+  background-color: var(--theme-interactive-active);
+}
+
+.active\:text-theme-text-on:active {
+  color: var(--theme-text-on);
+}
+
+.bg-theme-background-secondary {
+  background-color: var(--theme-surface);
+}
+
+.text-theme-text-on-primary {
+  color: var(--theme-text-on-primary);
+}
+
+.text-theme-text-on {
+  color: var(--theme-text-on);
+}

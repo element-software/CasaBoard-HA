@@ -1,0 +1,64 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CasaBoard",
+        "description": "Connect Home Assistant to your self-hosted CasaBoard instance. On Home Assistant OS, open CasaBoard from the App Ingress UI; use this integration for health sensors when CasaBoard has a direct HTTP URL.",
+        "data": {
+          "url": "CasaBoard URL",
+          "scan_interval": "Status poll interval (seconds)"
+        },
+        "data_description": {
+          "url": "Base URL of your running CasaBoard instance, including port if needed."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach CasaBoard at that URL. Check the address and that /api/health responds."
+    },
+    "abort": {
+      "already_configured": "This CasaBoard URL is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "CasaBoard options",
+        "data": {
+          "scan_interval": "Status poll interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      }
+    },
+    "sensor": {
+      "pages": {
+        "name": "Pages"
+      },
+      "ha_connection": {
+        "name": "HA connection",
+        "state": {
+          "connected": "Connected",
+          "disconnected": "Disconnected"
+        }
+      }
+    }
+  },
+  "services": {
+    "refresh": {
+      "name": "Refresh status",
+      "description": "Poll CasaBoard /api/health immediately.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry ID",
+          "description": "Optional. When set, only that entry is refreshed."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+name: Validate HACS
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Checkout-based checks: work on private repos. HACS itself downloads
+  # hacs.json via raw.githubusercontent.com, which 404s while the repo is private.
+  validate-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate integration layout and hacs.json
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import json, sys
+          from pathlib import Path
+
+          allowed = {
+              "name", "content_in_root", "filename", "hacs",
+              "hide_default_branch", "homeassistant", "persistent_directory",
+              "render_readme", "zip_release", "country",
+          }
+          errors = []
+
+          hacs_path = Path("hacs.json")
+          if not hacs_path.is_file():
+              errors.append("missing root hacs.json")
+          else:
+              data = json.loads(hacs_path.read_text())
+              extra = set(data) - allowed
+              if extra:
+                  errors.append(f"hacs.json unknown keys: {sorted(extra)}")
+              if "name" not in data or not str(data["name"]).strip():
+                  errors.append("hacs.json requires non-empty string 'name'")
+              print(f"hacs.json OK: {data}")
+
+          domain_dir = Path("custom_components/casaboard")
+          manifest_path = domain_dir / "manifest.json"
+          if not domain_dir.is_dir():
+              errors.append("missing custom_components/casaboard/")
+          elif not manifest_path.is_file():
+              errors.append("missing custom_components/casaboard/manifest.json")
+          else:
+              manifest = json.loads(manifest_path.read_text())
+              for key in ("domain", "name", "version", "documentation", "issue_tracker", "codeowners"):
+                  if key not in manifest:
+                      errors.append(f"manifest.json missing '{key}'")
+              if manifest.get("domain") != "casaboard":
+                  errors.append("manifest.json domain must be 'casaboard'")
+              print(f"manifest.json OK: domain={manifest.get('domain')} version={manifest.get('version')}")
+
+          brand_icon = domain_dir / "brand" / "icon.png"
+          if not brand_icon.is_file():
+              errors.append("missing custom_components/casaboard/brand/icon.png (required for HACS/HA brand images)")
+
+          for required in ("LICENSE", "README.md"):
+              if not Path(required).is_file():
+                  errors.append(f"missing {required}")
+
+          if errors:
+              print("FAIL:")
+              for e in errors:
+                  print(f" - {e}")
+              sys.exit(1)
+          print("HACS integration layout checks passed")
+          PY
+
+  validate-hacs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: HACS validation
+        uses: hacs/action@main
+        with:
+          category: integration
+          # images: plugin/theme check only; safe to ignore for integrations.
+          # hacsjson / integration_manifest: ignored while private (raw.githubusercontent.com).
+          # license: GitHub only reports license from the default branch.
+          ignore: images hacsjson license integration_manifest
+          comment: false
+
+  validate-hassfest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hassfest
+        uses: home-assistant/actions/hassfest@master

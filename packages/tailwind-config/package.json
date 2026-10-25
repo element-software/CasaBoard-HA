@@ -1,0 +1,17 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./globals.css",
+    "./postcss": "./postcss.config.js"
+  },
+  "dependencies": {
+    "@heroui/react": "^2.8.3"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.18",
+    "tailwindcss": "^4.1.5"
+  }
+}

@@ -1,0 +1,63 @@
+/* Load after @measured/puck/puck.css.
+ * Puck sets #puck-canvas-root to white; ThemeScope provides --theme-page-background. */
+
+/* Puck's component wrapper divs don't get a size by default; force them to
+ * fill their grid/flex cell so components stretch to match neighbors. */
+[data-puck-component] {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+[data-puck-component] > * {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+[data-casaboard-theme] #puck-canvas-root {
+  background-color: var(--theme-page-background) !important;
+}
+
+/* Grey “workspace” padding around the artboard → same page canvas tone */
+[data-casaboard-theme] div:has(> div:has(#puck-canvas-root)) {
+  background: var(--theme-page-background) !important;
+}
+
+/* Softer drop zones: theme-tinted outlines instead of default Puck azure */
+[data-casaboard-theme] [class*="_DropZone_"]:empty {
+  background: color-mix(
+    in srgb,
+    var(--theme-primary) 8%,
+    var(--theme-page-background)
+  ) !important;
+  outline: 2px dashed
+    color-mix(in srgb, var(--theme-border) 55%, transparent) !important;
+}
+
+[data-casaboard-theme]
+  [class*="_DropZone--isAreaSelected_"],
+[data-casaboard-theme]
+  [class*="_DropZone--hoveringOverArea_"]:not([class*="_DropZone--isRootZone_"]) {
+  background: color-mix(
+    in srgb,
+    var(--theme-primary) 14%,
+    var(--theme-page-background)
+  ) !important;
+  outline: 2px dashed
+    color-mix(in srgb, var(--theme-primary) 45%, transparent) !important;
+}
+
+[data-casaboard-theme] [class*="_DropZone--isDestination_"] {
+  outline: 2px dashed var(--theme-primary) !important;
+}
+
+[data-casaboard-theme]
+  [class*="_DropZone--isDestination_"]:not([class*="_DropZone--isRootZone_"]) {
+  background: color-mix(
+    in srgb,
+    var(--theme-primary) 12%,
+    transparent
+  ) !important;
+}

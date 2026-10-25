@@ -1,0 +1,26 @@
+name: CasaBoard
+version: "0.3.1"
+slug: casaboard
+description: >-
+  Open-source, self-hosted dashboard builder for Home Assistant.
+  Drag-and-drop editing with local-only storage — no cloud account.
+url: https://github.com/element-software/CasaBoard-HA
+arch:
+  - aarch64
+  - amd64
+init: false
+ingress: true
+ingress_port: 3000
+ports:
+  3000/tcp: null
+panel_icon: mdi:home-outline
+panel_title: CasaBoard
+panel_admin: false
+startup: application
+boot: auto
+image: ghcr.io/element-software/casaboard
+environment:
+  DATA_DIR: /data
+  PORT: "3000"
+watchdog: http://[HOST]:[PORT:3000]/api/health
+schema: false

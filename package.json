@@ -1,0 +1,42 @@
+{
+  "name": "casaboard-turbo",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.6",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "packageManager": "npm@10.9.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "next": "16.2.11"
+  },
+  "overrides": {
+    "postcss": "8.5.18",
+    "sharp": "0.35.0",
+    "tsup": {
+      "esbuild": "0.28.1"
+    },
+    "vite": {
+      "esbuild": "0.25.12"
+    },
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "minimatch@3": {
+      "brace-expansion": "1.1.16"
+    }
+  }
+}
