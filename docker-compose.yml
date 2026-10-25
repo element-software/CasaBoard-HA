@@ -2,7 +2,7 @@ services:
   casaboard:
     # Update: docker compose pull && docker compose up -d
     # Contributors building from source: docker compose build (uses `build: .`).
-    image: ghcr.io/element-software/casaboard:latest
+    image: ghcr.io/element-software/casaboard-ha:latest
     build: .
     ports:
       - "3000:3000"

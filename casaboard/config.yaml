@@ -18,7 +18,7 @@ panel_title: CasaBoard
 panel_admin: false
 startup: application
 boot: auto
-image: ghcr.io/element-software/casaboard
+image: ghcr.io/element-software/casaboard-ha
 environment:
   DATA_DIR: /data
   PORT: "3000"
