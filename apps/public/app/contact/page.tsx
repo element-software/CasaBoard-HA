@@ -3,6 +3,7 @@ import ContactPageContent from "./ContactPageContent";
 import Icon from "@mdi/react";
 import { mdiEmailOutline, mdiClockFast, mdiHeadset } from "@mdi/js";
 import { metadataForRoute } from "../lib/og/content";
+import { GITHUB_ISSUES_URL } from "../lib/site";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = metadataForRoute("contact");
@@ -41,7 +42,7 @@ export default function ContactPage() {
           <p className="text-violet-200/80 text-lg max-w-2xl mx-auto mb-10">
             Have a question or feedback? Use the form below, or open an issue on{" "}
             <a
-              href="https://github.com/element-software/CasaBoard-HA/issues"
+              href={GITHUB_ISSUES_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white underline underline-offset-2 hover:text-violet-100"

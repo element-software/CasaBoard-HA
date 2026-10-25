@@ -18,6 +18,7 @@ import {
   mdiTabletDashboard,
 } from "@mdi/js";
 import React from "react";
+import { GITHUB_CLONE_URL, GITHUB_ISSUES_URL, GITHUB_REPO_URL } from "@repo/lib";
 
 export interface DocSection {
   slug: string;
@@ -178,7 +179,7 @@ const DockerInstall: React.FC = () => (
     <TimelineStep number={2} title="Start the container" text="Run docker compose up -d from the repository root." />
     <TimelineStep number={3} title="Open the app" text="Visit the container's address on port 3000 (e.g. http://localhost:3000 or http://<host-ip>:3000)." isLast />
 
-    <CodeBlock>{`git clone https://github.com/element-software/CasaBoard-HA.git
+    <CodeBlock>{`git clone ${GITHUB_CLONE_URL}
 cd CasaBoard-HA
 docker compose up -d
 # then open http://localhost:3000`}</CodeBlock>
@@ -202,7 +203,7 @@ const HAAppInstall: React.FC = () => (
       intro="On Home Assistant OS, install CasaBoard as an App from a custom Supervisor repository. The UI opens via Ingress (sidebar → CasaBoard → Open Web UI)."
     />
 
-    <TimelineStep number={1} title="Add the repository" text="Settings → Apps → Add-on store → ⋮ → Repositories. Add https://github.com/element-software/CasaBoard-HA." />
+    <TimelineStep number={1} title="Add the repository" text={`Settings → Apps → Add-on store → ⋮ → Repositories. Add ${GITHUB_REPO_URL}.`} />
     <TimelineStep number={2} title="Install and start" text="Install CasaBoard, start it, then open it with Open Web UI (Ingress)." />
     <TimelineStep number={3} title="Connect Home Assistant" text="Inside CasaBoard, connect with your HA URL and a long-lived access token (or HA sign-in)." isLast />
 
@@ -490,24 +491,24 @@ const Help: React.FC = () => (
         <h3 className="font-semibold text-slate-900 mb-1">GitHub Issues</h3>
         <p className="text-sm text-slate-500 mb-3">Report a bug or ask a question on the public repository.</p>
         <a
-          href="https://github.com/element-software/CasaBoard-HA/issues"
+          href={GITHUB_ISSUES_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm font-medium text-violet-600 hover:text-violet-700"
         >
-          github.com/element-software/CasaBoard-HA/issues →
+          {GITHUB_ISSUES_URL.replace("https://", "")} →
         </a>
       </div>
       <div className="p-5 bg-white border border-slate-100 shadow-sm rounded-xl">
         <h3 className="font-semibold text-slate-900 mb-1">Source & license</h3>
         <p className="text-sm text-slate-500 mb-3">CasaBoard is free and MIT licensed. Browse the code, fork it, or open a pull request.</p>
         <a
-          href="https://github.com/element-software/CasaBoard-HA"
+          href={GITHUB_REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm font-medium text-violet-600 hover:text-violet-700"
         >
-          github.com/element-software/CasaBoard-HA →
+          {GITHUB_REPO_URL.replace("https://", "")} →
         </a>
       </div>
     </div>

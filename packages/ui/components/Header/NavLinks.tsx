@@ -1,8 +1,7 @@
-import { LinkService } from "@repo/lib";
+import { GITHUB_REPO_URL, LinkService } from "@repo/lib";
 import Icon from "@mdi/react";
 import { mdiBookOpen, mdiEmail, mdiGithub, mdiInformation, mdiShield } from "@mdi/js";
 
-const GITHUB_REPO_URL = "https://github.com/element-software/CasaBoard-HA";
 
 export interface NavLink {
   href: string;

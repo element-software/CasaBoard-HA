@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { LinkService } from "@repo/lib";
+import { GITHUB_REPO_URL, LinkService } from "@repo/lib";
 import { CasaBoardLogo } from "../../Logo/index";
 
-const GITHUB_REPO_URL = "https://github.com/element-software/CasaBoard-HA";
 
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GITHUB_REPO_URL } from "@repo/lib";
 
 const siteUrl = "https://casaboard.dev";
 
@@ -57,7 +58,7 @@ export const publicOgRoutes: Record<PublicOgRouteKey, RouteOgDefinition> = {
     metadata: {
       title: "Contact — CasaBoard",
       description:
-        "Questions, feedback, or found a bug? Reach out or open an issue on github.com/element-software/CasaBoard-HA.",
+        `Questions, feedback, or found a bug? Reach out or open an issue on ${GITHUB_REPO_URL.replace("https://", "")}.`,
     },
     og: {
       title: "Contact",

@@ -22,3 +22,11 @@ export {
   MAX_LOG_DETAILS_CHARS,
 } from "./logger";
 export { countPuckDataWidgets } from "./puck/countPuckDataWidgets";
+export {
+  GITHUB_REPO,
+  GITHUB_REPO_URL,
+  GITHUB_ISSUES_URL,
+  GITHUB_LICENSE_URL,
+  GITHUB_CLONE_URL,
+} from "./site";
+

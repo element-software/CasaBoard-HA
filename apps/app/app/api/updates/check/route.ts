@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
+import { GITHUB_REPO } from "@repo/lib";
 import { isNewerRelease } from "@repo/lib/releases/compare";
 
 export const dynamic = "force-dynamic";
 
-const GITHUB_REPO = "element-software/CasaBoard-HA";
 
 type GitHubRelease = {
   tag_name: string;

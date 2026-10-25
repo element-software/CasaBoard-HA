@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button, Input, Textarea } from "@heroui/react";
+import { GITHUB_ISSUES_URL } from "../lib/site";
 
 export default function ContactPageContent() {
   const [name, setName] = useState("");
@@ -56,7 +57,7 @@ export default function ContactPageContent() {
         <div className="bg-violet-50 border border-violet-100 rounded-2xl p-5 text-sm text-slate-600">
           Prefer GitHub?{" "}
           <a
-            href="https://github.com/element-software/CasaBoard-HA/issues"
+            href={GITHUB_ISSUES_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-violet-700 hover:underline"

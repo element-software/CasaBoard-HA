@@ -12,7 +12,9 @@ import {
   mdiCheckCircle,
   mdiTabletDashboard,
 } from "@mdi/js";
+import { GITHUB_REPO_URL } from "@repo/lib";
 import { AppLink } from "../Shared/AppLink";
+
 
 export type AboutPageContentProps = {
   /** In-app docs live at /setup/docs; the website uses /docs. */
@@ -67,7 +69,7 @@ export function AboutPageContent({
             <p>
               CasaBoard pages are URLs served from your own server. Open them in a kiosk browser on a wall display, on a tablet in the kitchen, or through the Home Assistant App Ingress sidebar. Free, MIT-licensed, and open on{" "}
               <a
-                href="https://github.com/element-software/CasaBoard-HA"
+                href={GITHUB_REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-violet-600 hover:underline"
