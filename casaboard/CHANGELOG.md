@@ -2,6 +2,11 @@
 
 All notable changes to the CasaBoard Home Assistant App are documented here.
 
+## [0.3.2] - 2026-10-25
+
+- fix: publish the HA image as ghcr.io/element-software/casaboard-ha
+- fix: share one CasaBoard-HA GitHub URL across the app
+
 ## [0.3.1] - 2026-10-23
 
 - fix: stop HTTPS Ingress from marking CasaBoard as insecure

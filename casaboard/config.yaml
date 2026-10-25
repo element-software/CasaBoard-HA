@@ -1,5 +1,5 @@
 name: CasaBoard
-version: "0.3.1"
+version: "0.3.2"
 slug: casaboard
 description: >-
   Open-source, self-hosted dashboard builder for Home Assistant.
