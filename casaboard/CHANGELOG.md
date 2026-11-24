@@ -2,6 +2,10 @@
 
 All notable changes to the CasaBoard Home Assistant App are documented here.
 
+## [0.3.3] - 2026-11-24
+
+- Change footer credit to descriptive wording linking to service page (#1)
+
 ## [0.3.2] - 2026-10-25
 
 - fix: publish the HA image as ghcr.io/element-software/casaboard-ha
