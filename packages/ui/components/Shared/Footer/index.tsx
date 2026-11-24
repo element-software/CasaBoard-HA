@@ -62,9 +62,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="mt-6 text-xs text-theme-text-secondary text-center">
-          © {year} CasaBoard. MIT licensed. Free, open source, and self-hosted. Powered by{" "}
+          © {year} CasaBoard. MIT licensed. Free, open source, and self-hosted. Software development by{" "}
           <a
-            href="https://element-software.co.uk"
+            href="https://element-software.co.uk/services/software-development"
             target="_blank"
             rel="noopener noreferrer"
             className="text-theme-primary"

@@ -104,9 +104,9 @@ export const Header = () => {
               © {new Date().getFullYear()} CasaBoard. MIT licensed.
             </div>
             <div className="text-xs text-slate-500 text-center">
-              Powered by{" "}
+              Software development by{" "}
               <a
-                href="https://element-software.co.uk"
+                href="https://element-software.co.uk/services/software-development"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-violet-600 hover:underline"
